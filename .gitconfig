@@ -1,0 +1,6 @@
+[alias]
+    co = checkout
+    br = branch
+    st = status
+    sbr = submodule foreach --recursive git branch
+    sst = submodule foreach --recursive git status
