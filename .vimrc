@@ -58,7 +58,15 @@ au BufNewFile, BufRead *.py
 let g:yapf_style = "\"{ column_limit: 100 }\""
 autocmd BufWritePre *.py Yapf
 
-command -nargs=+ Pygrep tabnew | r ! grep -rn -C1 --include=*.py <args>
-command -nargs=+ Cppgrep tabnew | r ! grep -rn -C1 --include=*.{h,cpp} <args>
-command -nargs=+ Grep tabnew | r ! grep -rn -C1 <args>
+function Grep(exp, includes="*.*")
+    execute "tabnew | r ! grep -rn -C1 --include=" . a:includes . " -E " . a:exp
+endfunction
 
+command -nargs=+ Pygrep call Grep(<args>, "*.{py}")
+command -nargs=+ Cppgrep call Grep(<args>, "*.{h,cpp}")
+
+function! ReplaceAll(exp, replace, includes="*.*")
+    execute "!grep -rl --include=" . a:includes . " -E " . a:exp . " | xargs -I{} sed -i s/" . a:exp . "/" . a:replace . "/g {}"
+endfunction
+
+command -nargs=* ReplaceAll call ReplaceAll(<f-args>)
