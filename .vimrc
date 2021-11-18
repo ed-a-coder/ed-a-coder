@@ -63,7 +63,7 @@ autocmd BufWritePre *.py Yapf
 let g:lsc_server_commands = {'dart': 'dart_language_server'}
 let g:lsc_auto_map = v:true
 
-autocmd BufWritePost *.dart execute "silent !dart format %" | e %
+autocmd BufWritePost *.dart silent execute "!dart format %" | e % | redraw!
 
 function Grep(exp, includes="*.*")
     execute "tabnew | r ! grep -rn -C1 --include=" . a:includes . " -E " . a:exp
