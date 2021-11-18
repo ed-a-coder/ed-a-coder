@@ -55,6 +55,7 @@ au BufNewFile, BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
+" git clone https://github.com/mindriot101/vim-yapf.git in vim pack folder and install https://pypi.org/project/yapf/
 let g:yapf_style = "\"{ column_limit: 100 }\""
 autocmd BufWritePre *.py Yapf
 
