@@ -9,11 +9,11 @@ set autoindent
 " use intelligent indentation for C
 set smartindent
 " configure tabwidth and insert spaces instead of tabs
-set tabstop=4        " tab width is 4 spaces
-set shiftwidth=4     " indent also with 4 spaces
+set tabstop=2        " tab width is 2 spaces
+set shiftwidth=2     " indent also with 2 spaces
 set expandtab        " expand tabs to spaces
-" wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
-set textwidth=120
+
+set textwidth=80
 " turn syntax highlighting on
 set t_Co=256
 syntax on
@@ -58,6 +58,10 @@ au BufNewFile, BufRead *.py
 " git clone https://github.com/mindriot101/vim-yapf.git in vim pack folder and install https://pypi.org/project/yapf/
 let g:yapf_style = "\"{ column_limit: 100 }\""
 autocmd BufWritePre *.py Yapf
+
+" git clone https://github.com/natebosch/vim-lsc.git and https://github.com/dart-lang/dart-vim-plugin.git
+let g:lsc_server_commands = {'dart': 'dart_language_server'}
+let g:lsc_auto_map = v:true
 
 function Grep(exp, includes="*.*")
     execute "tabnew | r ! grep -rn -C1 --include=" . a:includes . " -E " . a:exp
