@@ -44,7 +44,7 @@ noremap <Tab> >>
 noremap <S-Tab> <<
 
 " set line width marker
-set colorcolumn=100,120
+set colorcolumn=80,100
 
 au BufNewFile, BufRead *.py
     \ set tabstop=4 |
