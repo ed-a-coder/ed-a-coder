@@ -9,11 +9,13 @@ set autoindent
 " use intelligent indentation for C
 set smartindent
 " configure tabwidth and insert spaces instead of tabs
-set tabstop=2        " tab width is 2 spaces
-set shiftwidth=2     " indent also with 2 spaces
+set tabstop=4        " tab width is 4 spaces
+set shiftwidth=4     " indent also with 4 spaces
+set softtabstop=4
 set expandtab        " expand tabs to spaces
+set fileformat=unix
 
-set textwidth=80
+set textwidth=79
 " turn syntax highlighting on
 set t_Co=256
 syntax on
@@ -46,14 +48,10 @@ noremap <S-Tab> <<
 " set line width marker
 set colorcolumn=80,100
 
-au BufNewFile, BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+au BufNewFile, BufRead *.dart
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
 
 " git clone https://github.com/mindriot101/vim-yapf.git in vim pack folder and install https://pypi.org/project/yapf/
 let g:yapf_style = "\"{ column_limit: 100 }\""
@@ -69,6 +67,7 @@ function Grep(exp, includes="*.*")
     execute "tabnew | r ! grep -rn -C1 --include=" . a:includes . " -E " . a:exp
 endfunction
 
+command -nargs=+ Grep call Grep(<f-args>)
 command -nargs=+ Pygrep call Grep(<args>, "*.{py}")
 command -nargs=+ Cppgrep call Grep(<args>, "*.{h,cpp}")
 
