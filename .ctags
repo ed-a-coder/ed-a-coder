@@ -1,0 +1,6 @@
+-R
+--languages=python,c++
+--python-kinds=-i
+--c++-kinds=+p
+--fields=+iaS
+--extra=+q
