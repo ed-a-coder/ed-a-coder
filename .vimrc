@@ -29,6 +29,8 @@ set comments=sl:/*,mb:\ *,elx:\ */
 " for netrw
 set nocp
 filetype plugin on
+set incsearch
+set hls
 
 " highlight trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -48,20 +50,32 @@ noremap <S-Tab> <<
 " set line width marker
 set colorcolumn=80,100
 
-au BufNewFile, BufRead *.dart
+au BufNewFile,BufRead *.dart
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
 
+au BufNewFile,BufRead *.tsx
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4
+
 " git clone https://github.com/mindriot101/vim-yapf.git in vim pack folder and install https://pypi.org/project/yapf/
 let g:yapf_style = "\"{ column_limit: 100 }\""
-autocmd BufWritePre *.py Yapf
+" autocmd BufWritePre *.py Yapf
 
 " git clone https://github.com/natebosch/vim-lsc.git and https://github.com/dart-lang/dart-vim-plugin.git
 let g:lsc_server_commands = {'dart': 'dart_language_server'}
 let g:lsc_auto_map = v:true
 
 autocmd BufWritePost *.dart silent execute "!dart format %" | e % | redraw!
+autocmd BufWritePost *.tsx silent execute "!./node_modules/.bin/eslint --fix %" | e % | redraw!
+autocmd BufWritePost *.py silent execute "!black %" | e % | redraw!
 
 function Grep(exp, includes="*.*")
     execute "tabnew | r ! grep -rn -C1 --include=" . a:includes . " -E " . a:exp
