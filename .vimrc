@@ -71,6 +71,7 @@ let g:lsc_auto_map = v:true
 autocmd BufWritePost *.dart silent execute "!dart format %" | e % | redraw!
 autocmd BufWritePost *.tsx silent execute "!./node_modules/.bin/eslint --fix %" | e % | redraw!
 autocmd BufWritePost *.py silent execute "!black %" | e % | redraw!
+autocmd BufWritePost *.cc,*cpp,*.h silent execute "!clang-format -i %" | e % | redraw!
 
 function Grep(exp, includes="*.*")
     execute "tabnew | r ! grep -rn -C1 --include=" . a:includes . " -E " . a:exp
