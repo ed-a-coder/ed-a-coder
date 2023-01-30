@@ -1,6 +1,7 @@
 -R
---languages=python,c++
---python-kinds=-i
---c++-kinds=+p
+--python-kinds
+--c-kinds
+--javascript-kinds
+--c++-kinds=+cmtf
 --fields=+iaS
 --extra=+q
