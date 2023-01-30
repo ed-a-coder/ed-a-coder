@@ -48,22 +48,17 @@ noremap <Tab> >>
 noremap <S-Tab> <<
 
 " set line width marker
-set colorcolumn=80,100
+set colorcolumn=100,120
 
-au BufNewFile,BufRead *.dart
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
-
-au BufNewFile,BufRead *.tsx
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
-
-au BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.{dart,py,tsx}
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4
+
+au BufNewFile,BufRead *.{cc,cpp}
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
 
 " git clone https://github.com/mindriot101/vim-yapf.git in vim pack folder and install https://pypi.org/project/yapf/
 let g:yapf_style = "\"{ column_limit: 100 }\""
