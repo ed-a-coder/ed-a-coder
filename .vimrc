@@ -55,7 +55,7 @@ au BufNewFile,BufRead *.{dart,py,tsx}
     \ set softtabstop=4 |
     \ set shiftwidth=4
 
-au BufNewFile,BufRead *.{cc,cpp}
+au BufNewFile,BufRead *.{h,cc,cpp}
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2
@@ -69,7 +69,7 @@ let g:lsc_server_commands = {'dart': 'dart_language_server'}
 let g:lsc_auto_map = v:true
 
 autocmd BufWritePost *.dart silent execute "!dart format %" | e % | redraw!
-autocmd BufWritePost *.tsx silent execute "!./node_modules/.bin/eslint --fix %" | e % | redraw!
+autocmd BufWritePost *.tsx silent execute "!npx eslint --fix %" | e % | redraw!
 autocmd BufWritePost *.py silent execute "!black %" | e % | redraw!
 autocmd BufWritePost *.cc,*cpp,*.h silent execute "!clang-format -i %" | e % | redraw!
 
