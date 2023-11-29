@@ -6,3 +6,7 @@
     sst = submodule foreach --recursive git status
     lol = log --oneline
     dw = diff --word-diff
+[init]
+    defaultBranch = main
+[merge]
+    conflictstyle = diff3
