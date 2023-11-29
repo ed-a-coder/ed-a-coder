@@ -15,7 +15,7 @@ set softtabstop=4
 set expandtab        " expand tabs to spaces
 set fileformat=unix
 
-set textwidth=79
+set textwidth=100
 " turn syntax highlighting on
 set t_Co=256
 syntax on
