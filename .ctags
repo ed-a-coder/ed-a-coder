@@ -4,4 +4,4 @@
 --javascript-kinds
 --c++-kinds=+cmtf
 --fields=+iaS
---extra=+q
+--extras=+q
